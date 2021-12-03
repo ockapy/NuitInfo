@@ -1,0 +1,24 @@
+<script>
+    if (!localStorage.getItem('darkOn')) {
+        console.log("test")
+        localStorage.setItem("darkOn", "false")
+    }
+
+    function activeDarkMode() {
+        console.log(localStorage.getItem("darkOn"))
+        let root = document.documentElement
+        if (localStorage.getItem('darkOn') == "true") {
+            return localStorage.setItem("darkOn", "false")
+            root.style.setProperty("--background", "#09182b")
+            root.style.setProperty("--color", "white")
+            root.style.setProperty("--affichage-background", "#102949")
+        } else if(localStorage.getItem("darkOn") == "false") {
+            return localStorage.setItem("darkOn", "true")
+            root.style.setProperty("--background", "#eaeff3")
+            root.style.setProperty("--color", "#163257")
+            root.style.setProperty("--affichage-background", "white")
+        } else {
+            return localStorage.setItem("darkOn", "false")
+        }
+    }
+</script>
