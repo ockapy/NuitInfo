@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Intranet Pharmacie SAUTHEUZ</title>
+</head>
+
+<body>
+    <table class="main-table">
+        <tr>
+            <td class="td-menu">
+                <div class="menu">
+                    <table>
+                        <tr>
+                            <td colspan="2" onclick="activeDarkMode()">
+                                DARKMODE
+                            </td>
+                        </tr>
+                        <!-- A afficher seulement si l'utilisiteur est un administrateur et qu'il s'est connecté -->
+                        <tr onclick="javascript: window.location.href = '/Sauvetage/admin'">
+                            <td><img src="/images/admin.png" class="img-little invert"></td>
+                            <td>Administration</td> 
+                        </tr>
+                        <!-- Modifier le texte en 'Gestion de mon compte' quand l'utilisateur est connecté -->
+                        <!-- Modifier le lien de href en /Sauvetage/monCompte quand l'utilisateur est connecté -->
+                        <tr onclick="javascript: window.location.href = '/Sauvetage/connexion'">
+                            <td><img src="/images/patient.png" class="img-little invert"></td>
+                            <td>Identification</td> 
+                        </tr>
+                        <tr>
+                            <td colspan="2"> <input type="search" list="Search" placeholder="Rechercher" class="input-search"> </td>
+                        </tr>
+                        <tr  onclick="javascript: window.location.href = '/Sauvetage'" class="item-selected">
+                            <td><img src="/images/news.png" class="img-little invert"></td>
+                            <td>News</td>
+                        </tr>
+                        <tr onclick="javascript: window.location.href = '/Sauvetage/sauveteurs'">
+                            <td><img src="/images/lifeBuoy.png" class="img-little"></td>
+                            <td>Sauveteurs</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td class="td-vue">
+                <!-- <h1>DASHBOARD</h1>
+                <div class="container-flex">
+                    
+                    <div>
+                        <h2>Test des boutons</h2>
+                        <button class="btn btn-valider">Valider</button>
+                        <button class="btn btn-modifier">Modifier</button>
+                        <button class="btn btn-supprimer">Supprimer</button>
+                    </div>
+                    <div>
+                        <h2>Test des boutons</h2>
+                        <button class="btn btn-valider">Valider</button>
+                        <button class="btn btn-modifier">Modifier</button>
+                        <button class="btn btn-supprimer">Supprimer</button>
+                    </div>
+                </div> -->
+                <table class="affichage-principal">
+                    <tr>
+                        <th colspan="2" class="titre-categorie">
+                            Nouveautés de la semaine
+                        </th>
+                    </tr>
+                    <tr>
+                        <td> <!-- PARTIE TEXT DE LA PAGE D'ACCUEIL -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ligula dolor. Suspendisse tempus odio eros, eu commodo augue suscipit nec. Fusce faucibus ultricies nisl. Nam tincidunt neque vel odio sollicitudin, a interdum lectus sodales. Fusce id malesuada ante, vitae sodales purus. Vestibulum eu nunc non nibh bibendum vulputate nec a est. Nulla gravida ultricies tempor. Nam efficitur placerat nisi, nec vehicula tellus.
+                            Curabitur eu lectus a ipsum scelerisque eleifend. Nunc hendrerit eget tellus vitae dignissim. Cras risus turpis, tempor nec neque sed, tristique volutpat nisi. Morbi vehicula libero eu elementum aliquam. Mauris hendrerit commodo lectus, ac facilisis quam volutpat quis. Sed lacus ligula, mattis eu enim sit amet, eleifend vestibulum nisl. Aenean dictum non erat eu iaculis. Curabitur nibh enim, sollicitudin in mi id, posuere viverra libero. Nulla facilisi. Donec sit amet lacus tincidunt, posuere ligula sit amet, fringilla leo. Morbi non placerat dui. Donec accumsan quam at neque eleifend, sed fringilla libero venenatis. Suspendisse condimentum ligula diam, id rhoncus nisl mattis at. Duis consequat varius facilisis. Sed porta lorem vitae interdum vestibulum.
+                        </td>
+                        <td class="td-image"> <!-- PARTIE IMAGE DE LA PAGE D'ACCUEIL -->
+                            img
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <!-- PARTIE TEXT DE LA PAGE D'ACCUEIL -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ligula dolor. Suspendisse tempus odio eros, eu commodo augue suscipit nec. Fusce faucibus ultricies nisl. Nam tincidunt neque vel odio sollicitudin, a interdum lectus sodales. Fusce id malesuada ante, vitae sodales purus. Vestibulum eu nunc non nibh bibendum vulputate nec a est. Nulla gravida ultricies tempor. Nam efficitur placerat nisi, nec vehicula tellus.
+                        </td>
+                        <td class="td-image"> <!-- PARTIE IMAGE DE LA PAGE D'ACCUEIL -->
+                            img
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" class="titre-categorie">
+                            Une autre catégorie
+                        </th>
+                    </tr>
+                    <tr>
+                        <td> <!-- PARTIE TEXT DE LA PAGE D'ACCUEIL -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ligula dolor. Suspendisse tempus odio eros, eu commodo augue suscipit nec. Fusce faucibus ultricies nisl. Nam tincidunt neque vel odio sollicitudin, a interdum lectus sodales. Fusce id malesuada ante, vitae sodales purus. Vestibulum eu nunc non nibh bibendum vulputate nec a est. Nulla gravida ultricies tempor. Nam efficitur placerat nisi, nec vehicula tellus.
+                            Curabitur eu lectus a ipsum scelerisque eleifend. Nunc hendrerit eget tellus vitae dignissim. Cras risus turpis, tempor nec neque sed, tristique volutpat nisi. Morbi vehicula libero eu elementum aliquam. Mauris hendrerit commodo lectus, ac facilisis quam volutpat quis. Sed lacus ligula, mattis eu enim sit amet, eleifend vestibulum nisl. Aenean dictum non erat eu iaculis. Curabitur nibh enim, sollicitudin in mi id, posuere viverra libero. Nulla facilisi. Donec sit amet lacus tincidunt, posuere ligula sit amet, fringilla leo. Morbi non placerat dui. Donec accumsan quam at neque eleifend, sed fringilla libero venenatis. Suspendisse condimentum ligula diam, id rhoncus nisl mattis at. Duis consequat varius facilisis. Sed porta lorem vitae interdum vestibulum.
+                        </td>
+                        <td class="td-image"> <!-- PARTIE IMAGE DE LA PAGE D'ACCUEIL -->
+                            img
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <!-- PARTIE TEXT DE LA PAGE D'ACCUEIL -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ligula dolor. Suspendisse tempus odio eros, eu commodo augue suscipit nec. Fusce faucibus ultricies nisl. Nam tincidunt neque vel odio sollicitudin, a interdum lectus sodales. Fusce id malesuada ante, vitae sodales purus. Vestibulum eu nunc non nibh bibendum vulputate nec a est. Nulla gravida ultricies tempor. Nam efficitur placerat nisi, nec vehicula tellus.
+                        </td>
+                        <td class="td-image"> <!-- PARTIE IMAGE DE LA PAGE D'ACCUEIL -->
+                            img
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
+
+<%- include("darkMode") %>

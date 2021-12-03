@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Intranet Pharmacie SAUTHEUZ</title>
+</head>
+
+<body>
+    <table class="main-table">
+        <tr>
+            <td class="td-menu">
+                <div class="menu">
+                    <table>
+                        <tr>
+                            <td colspan="2" onclick="activeDarkMode()">
+                                DARKMODE
+                            </td>
+                        </tr>
+                        <!-- A afficher seulement si l'utilisiteur est un administrateur et qu'il s'est connecté -->
+                        <tr onclick="javascript: window.location.href = '/Sauvetage/admin'">
+                            <td><img src="/images/admin.png" class="img-little invert"></td>
+                            <td>Administration</td> 
+                        </tr>
+                        <!-- Modifier le texte en 'Gestion de mon compte' quand l'utilisateur est connecté -->
+                        <!-- Modifier le lien de href en /Sauvetage/monCompte quand l'utilisateur est connecté -->
+                        <tr onclick="javascript: window.location.href = '/Sauvetage/connexion'" class="input-search">
+                            <td><img src="/images/patient.png" class="img-little invert"></td>
+                            <td>Identification</td> 
+                        </tr>
+                        <tr>
+                            <td colspan="2"> <input type="search" list="Search" placeholder="Rechercher"> </td>
+                        </tr>
+                        <tr  onclick="javascript: window.location.href = '/Sauvetage'">
+                            <td><img src="/images/news.png" class="img-little invert"></td>
+                            <td>News</td>
+                        </tr>
+                        <tr onclick="javascript: window.location.href = '/Sauvetage/sauveteurs'" class="item-selected">
+                            <td><img src="/images/lifeBuoy.png" class="img-little"></td>
+                            <td>Sauveteurs</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td class="td-vue">
+                <table class="affichage-principal">
+                    <tr>
+                        <th colspan="2" class="titre-page">
+                            Vos valeureux sauveteurs
+                        </th>
+                    </tr>
+                    <% for(let i = 0; i < sauvetages.length; i++) { %>
+                    <tr>
+                        <th colspan="2" class="titre-categorie">
+                            <%= sauvetages[i].titre %> <!-- (nom prenom si autorisation == 1) -->
+                        </th>
+                    </tr>
+                    <tr>
+                        <td> <!-- PARTIE TEXT DE LA PAGE D'ACCUEIL -->
+                            <form action="/Sauvetage/modif" id="remplacermodif-<%= sauvetages[i].idSauvetage %>">
+                                <%= sauvetages[i].Article %>
+                            </form>
+                            </td>
+                        <% if(modif == true) {%>
+                        <td >
+                            <button class="btn btn-modifier" id="button-modifier-<%= sauvetages[i].idSauvetage %>" onclick="AutoriserModif('<%= sauvetages[i].idSauvetage %>')">Modifier</button>
+                        </td>
+                        <% } %>
+                    </tr>
+                    <% } %>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
+
+<script>
+    function AutoriserModif(id) {
+        let text = document.getElementById("remplacermodif-"+id);
+        text = text.innerHTML;
+        console.log(text)
+        let newTextArea = document.createElement("textarea");
+        newTextArea.value = text.replaceAll("  ", "");
+        newTextArea.setAttribute("name","newValue");
+        document.getElementById("remplacermodif-"+id).innerText = "";
+        document.getElementById("remplacermodif-"+id).append(newTextArea);
+
+        let button = document.getElementById("button-modifier-"+id);
+        button.setAttribute("class","btn btn-valider");
+        button.setAttribute("onclick",`validerChangements('${id}','${text})'`);
+        button.innerHTML = "Valider les modifications"
+
+        let form = document.createElement("form")
+        form.setAttribute("action", "/Sauvetage/sauveteurs/modif")
+
+        let id_form = document.createElement("input")
+        id_form.setAttribute("name", "id")
+        id_form.value = id
+
+        let text_form = document.createElement("input")
+        text_form.setAttribute("name", "text")
+        text_form.value = text.replaceAll("  ", "")
+
+        document.body.appendChild(form)
+        form.append(id_form)
+        form.append(text_form)
+
+        form.submit()
+    }
+
+</script>
+
+<%- include("darkMode") %>
